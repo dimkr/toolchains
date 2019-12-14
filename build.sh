@@ -1,4 +1,4 @@
-#!/bn/sh -xe 
+#!/bin/sh -xe 
 
 cd crosstool-ng
 ./bootstrap
