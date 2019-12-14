@@ -1,0 +1,8 @@
+language: minimal
+
+services:
+  - docker
+
+script:
+  - docker build -t toolchains .
+  - docker run -w /root/toolchains -v `pwd`:/root/toolchains toolchains ./build.sh
