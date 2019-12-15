@@ -4,12 +4,22 @@ services:
   - docker
 
 script:
-  - docker run -w /root/toolchains -v `pwd`:/root/toolchains dimkr/toolchains ./build.sh
+  - docker run -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET dimkr/toolchains ./build.sh
+
+jobs:
+  include:
+    - stage: crosstool-ng
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains dimkr/toolchains ./build-ct_ng.sh
+    - stage: Toolchains
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=arm-anyv7-linux-musleabi dimkr/toolchains ./build-toolchain.sh
+      name: ARMv7
+    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+      name: MIPS1
 
 before_deploy:
   - git config --local user.name "Dima Krasner"
-  - git config --local user.email "dima@dimakrasner.com"
-  - git tag -f "$TRAVIS_BRANCH-$(git log --format=%h -1)"
+  - git config --local user.email dima@dimakrasner.com
+  - git tag -f $TRAVIS_BRANCH-$(git log --format=%h -1)
 
 deploy:
   provider: releases
@@ -20,3 +30,8 @@ deploy:
   file: *.tar.xz
   on:
     repo: dimkr/toolchains
+
+cache:
+  directories:
+    - crosstool-ng/out
+    - crosstool-ng/.build/tarballs

@@ -1,0 +1,4 @@
+/.config
+/.build
+/build.log
+/*.tar.xz
