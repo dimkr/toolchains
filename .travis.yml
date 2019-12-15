@@ -3,9 +3,6 @@ language: minimal
 services:
   - docker
 
-script:
-  - docker run -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET dimkr/toolchains ./build.sh
-
 jobs:
   include:
     - stage: crosstool-ng
