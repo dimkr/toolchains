@@ -10,5 +10,5 @@ do
     cp -f $i .config
     ./ct-ng build
     name=${i##config-}
-    tar -C /opt/x-tools/$name | xz -9 > $name.tar.xz
+    tar -c /opt/x-tools/$name | xz -9 > $name.tar.xz
 done
