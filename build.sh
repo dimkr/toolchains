@@ -1,4 +1,4 @@
-#!/bin/sh -xe 
+#!/bin/sh -xe
 
 cd crosstool-ng
 ./bootstrap
@@ -9,4 +9,6 @@ for i in ../config-*
 do
     cp -f $i .config
     ./ct-ng build
+    name=${i##config-}
+    tar -C /opt/x-tools/$name | xz -9 > $name.tar.xz
 done
