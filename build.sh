@@ -9,6 +9,6 @@ for i in ../config-*
 do
     cp -f $i .config
     ./ct-ng build
-    name=${i##config-}
+    name=${i##../config-}
     tar -c /opt/x-tools/$name | xz -9 > $name.tar.xz
 done
