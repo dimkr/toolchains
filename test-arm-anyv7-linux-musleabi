@@ -1,4 +1,4 @@
-/tmp/test: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+/tmp/test: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, not stripped
 Attribute Section: aeabi
 File Attributes
   Tag_CPU_name: "7"
