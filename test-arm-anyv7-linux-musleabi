@@ -1,0 +1,15 @@
+/tmp/test: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+Attribute Section: aeabi
+File Attributes
+  Tag_CPU_name: "7"
+  Tag_CPU_arch: v7
+  Tag_THUMB_ISA_use: Thumb-2
+  Tag_ABI_PCS_wchar_t: 4
+  Tag_ABI_FP_rounding: Needed
+  Tag_ABI_FP_denormal: Needed
+  Tag_ABI_FP_exceptions: Needed
+  Tag_ABI_FP_number_model: IEEE 754
+  Tag_ABI_align_needed: 8-byte
+  Tag_ABI_enum_size: int
+  Tag_ABI_optimization_goals: Aggressive Size
+  Tag_CPU_unaligned_access: v6
