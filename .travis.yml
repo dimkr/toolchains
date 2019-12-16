@@ -10,7 +10,7 @@ jobs:
   include:
     - stage: crosstool-ng
       script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DISABLE=1 dimkr/toolchains ./build-ct_ng.sh
-    - stage: Toolchains
+    - stage: 1
       script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=arm-anyv7-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARMv7
       deploy:
@@ -31,7 +31,8 @@ jobs:
         file: mips-any32-linux-musl.tar.xz
         on:
           repo: dimkr/toolchains
-    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+    - stage: 2
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
       name: "MIPS1 (little endian)"
       deploy:
         provider: releases
