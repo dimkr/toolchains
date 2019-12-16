@@ -6,9 +6,9 @@ services:
 jobs:
   include:
     - stage: crosstool-ng
-      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains dimkr/toolchains ./build-ct_ng.sh
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache dimkr/toolchains ./build-ct_ng.sh
     - stage: Toolchains
-      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=arm-anyv7-linux-musleabi dimkr/toolchains ./build-toolchain.sh
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=arm-anyv7-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARMv7
       deploy:
         provider: releases
@@ -18,7 +18,7 @@ jobs:
         file: arm-anyv7-linux-musleabi.tar.xz
         on:
           repo: dimkr/toolchains
-    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
       name: "MIPS1 (big endian)"
       deploy:
         provider: releases
@@ -28,7 +28,7 @@ jobs:
         file: mips-any32-linux-musl.tar.xz
         on:
           repo: dimkr/toolchains
-    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
       name: "MIPS1 (little endian)"
       deploy:
         provider: releases
@@ -47,4 +47,5 @@ before_deploy:
 cache:
   directories:
     - crosstool-ng/out
-    - crosstool-ng/.build/tarballs
+    - .build/tarballs
+    - ccache

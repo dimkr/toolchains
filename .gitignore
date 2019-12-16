@@ -3,3 +3,4 @@
 /build.log
 /*.tar.xz
 /out
+/ccache
