@@ -11,7 +11,9 @@ jobs:
       script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=arm-anyv7-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARMv7
     - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
-      name: MIPS1
+      name: "MIPS1 (big endian)"
+    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+      name: "MIPS1 (little endian)"
 
 before_deploy:
   - git config --local user.name "Dima Krasner"
