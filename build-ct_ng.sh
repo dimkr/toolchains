@@ -1,6 +1,6 @@
 #!/bin/sh -xe
 
-[ ! -f out/bin/ct-ng ] || exit 0
+[ ! -f crosstool-ng/out/bin/ct-ng ] || exit 0
 
 cd crosstool-ng
 ./bootstrap

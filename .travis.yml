@@ -9,7 +9,7 @@ before_script:
 jobs:
   include:
     - stage: crosstool-ng
-      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache dimkr/toolchains ./build-ct_ng.sh
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DISABLE=1 dimkr/toolchains ./build-ct_ng.sh
     - stage: Toolchains
       script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=arm-anyv7-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARMv7
