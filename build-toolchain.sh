@@ -10,4 +10,4 @@ file hello-$TRIPLET > /tmp/test-$TRIPLET
 /opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A hello-$TRIPLET >> /tmp/test-$TRIPLET
 diff -u test-$TRIPLET /tmp/test-$TRIPLET
 
-tar -c hello-$TRIPLET /opt/x-tools/$TRIPLET | xz -9 > $TRIPLET.tar.xz
+tar -c hello-$TRIPLET /opt/x-tools/$TRIPLET | gzip -9 > $TRIPLET.tar.gz
