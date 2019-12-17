@@ -3,13 +3,8 @@ language: minimal
 services:
   - docker
 
-before_script:
-  - docker run --rm -v `pwd`/ccache:/root/.ccache dimkr/toolchains ccache -s
-
 jobs:
   include:
-    - stage: crosstool-ng
-      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DISABLE=1 dimkr/toolchains ./build-ct_ng.sh
     - stage: 1
       script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -v `pwd`/ccache:/root/.ccache -e TRIPLET=arm-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARM
@@ -43,9 +38,6 @@ jobs:
         on:
           repo: dimkr/toolchains
 
-after_success:
-  - docker run --rm -v `pwd`/ccache:/root/.ccache dimkr/toolchains ccache -s
-
 before_deploy:
   - git config --local user.name "Dima Krasner"
   - git config --local user.email dima@dimakrasner.com
@@ -53,6 +45,5 @@ before_deploy:
 
 cache:
   directories:
-    - crosstool-ng/out
     - .build/tarballs
     - ccache
