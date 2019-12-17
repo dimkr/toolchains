@@ -196,7 +196,7 @@ CT_ARCH_FPU=""
 # CT_ARCH_FLOAT_HW is not set
 # CT_ARCH_FLOAT_SOFTFP is not set
 CT_ARCH_FLOAT_SW=y
-CT_TARGET_CFLAGS="-march=armv4t -mtune=generic-armv7-a -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
+CT_TARGET_CFLAGS="-march=armv4t -mtune=generic-armv7-a -marm -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
 CT_TARGET_LDFLAGS="-Wl,--gc-sections -Wl,--sort-common"
 CT_ARCH_FLOAT="soft"
 
