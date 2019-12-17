@@ -3,9 +3,6 @@ language: minimal
 services:
   - docker
 
-before_script:
-  - docker run --rm -v `pwd`/ccache:/root/.ccache dimkr/toolchains ccache -s
-
 jobs:
   include:
     - stage: crosstool-ng
@@ -42,9 +39,6 @@ jobs:
         file: mipsel-any32-linux-musl.tar.xz
         on:
           repo: dimkr/toolchains
-
-after_success:
-  - docker run --rm -v `pwd`/ccache:/root/.ccache dimkr/toolchains ccache -s
 
 before_deploy:
   - git config --local user.name "Dima Krasner"
