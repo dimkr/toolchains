@@ -1,7 +1,7 @@
 #!/bin/sh -xe
 
 cp -f config-$TRIPLET .config
-./crosstool-ng/out/bin/ct-ng build
+ct-ng build
 
 grep -e ^CT_TARGET_CFLAGS= -e ^CT_TARGET_LDFLAGS= .config > /tmp/flags
 . /tmp/flags
