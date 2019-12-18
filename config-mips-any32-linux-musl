@@ -118,7 +118,7 @@ CT_LOG_INFO=y
 # CT_LOG_DEBUG is not set
 CT_LOG_LEVEL_MAX="INFO"
 # CT_LOG_SEE_TOOLS_WARN is not set
-CT_LOG_PROGRESS_BAR=y
+# CT_LOG_PROGRESS_BAR is not set
 # CT_LOG_TO_FILE is not set
 
 #
