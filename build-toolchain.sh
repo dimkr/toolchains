@@ -1,4 +1,14 @@
-#!/bin/sh -xe
+#!/bin/sh -e
+
+(
+	while true
+	do
+		sleep 60
+		echo
+	done
+) &
+
+set -x
 
 cp -f config-$TRIPLET .config
 ct-ng build
