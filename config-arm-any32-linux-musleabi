@@ -514,7 +514,7 @@ CT_GCC_4_8_or_later=y
 CT_CC_GCC_HAS_LIBMPX=y
 CT_CC_GCC_ENABLE_CXX_FLAGS=""
 CT_CC_GCC_CORE_EXTRA_CONFIG_ARRAY=""
-CT_CC_GCC_EXTRA_CONFIG_ARRAY="--disable-libsanitizer --disable-libquadmath --disable-libgomp --disable-libvtv"
+CT_CC_GCC_EXTRA_CONFIG_ARRAY="--disable-libsanitizer --disable-libvtv"
 CT_CC_GCC_STATIC_LIBSTDCXX=y
 CT_CC_GCC_SYSTEM_ZLIB=y
 CT_CC_GCC_CONFIG_TLS=m
@@ -704,28 +704,7 @@ CT_MPFR_later_than_3_0_0=y
 CT_MPFR_3_0_0_or_later=y
 CT_MPFR_REQUIRE_3_0_0_or_later=y
 # CT_COMP_LIBS_NCURSES is not set
-CT_COMP_LIBS_ZLIB=y
-CT_COMP_LIBS_ZLIB_PKG_KSYM="ZLIB"
-CT_ZLIB_DIR_NAME="zlib"
-CT_ZLIB_PKG_NAME="zlib"
-CT_ZLIB_SRC_RELEASE=y
-# CT_ZLIB_SRC_DEVEL is not set
-# CT_ZLIB_SRC_CUSTOM is not set
-CT_ZLIB_PATCH_GLOBAL=y
-# CT_ZLIB_PATCH_BUNDLED is not set
-# CT_ZLIB_PATCH_LOCAL is not set
-# CT_ZLIB_PATCH_BUNDLED_LOCAL is not set
-# CT_ZLIB_PATCH_LOCAL_BUNDLED is not set
-# CT_ZLIB_PATCH_NONE is not set
-CT_ZLIB_PATCH_ORDER="global"
-CT_ZLIB_V_1_2_11=y
-# CT_ZLIB_NO_VERSIONS is not set
-CT_ZLIB_VERSION="1.2.11"
-CT_ZLIB_MIRRORS="http://downloads.sourceforge.net/project/libpng/zlib/${CT_ZLIB_VERSION} https://www.zlib.net/"
-CT_ZLIB_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
-CT_ZLIB_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
-CT_ZLIB_ARCHIVE_FORMATS=".tar.xz .tar.gz"
-CT_ZLIB_SIGNATURE_FORMAT="packed/.asc"
+# CT_COMP_LIBS_ZLIB is not set
 CT_ALL_COMP_LIBS_CHOICES="CLOOG EXPAT GETTEXT GMP ISL LIBELF LIBICONV MPC MPFR NCURSES ZLIB"
 # CT_LIBICONV_NEEDED is not set
 # CT_GETTEXT_NEEDED is not set
@@ -733,12 +712,11 @@ CT_GMP_NEEDED=y
 CT_MPFR_NEEDED=y
 CT_ISL_NEEDED=y
 CT_MPC_NEEDED=y
-CT_ZLIB_NEEDED=y
+# CT_ZLIB_NEEDED is not set
 CT_GMP=y
 CT_MPFR=y
 CT_ISL=y
 CT_MPC=y
-CT_ZLIB=y
 
 #
 # Companion tools
