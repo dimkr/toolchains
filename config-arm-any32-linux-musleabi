@@ -272,7 +272,7 @@ CT_LINUX_PATCH_GLOBAL=y
 # CT_LINUX_PATCH_LOCAL_BUNDLED is not set
 # CT_LINUX_PATCH_NONE is not set
 CT_LINUX_PATCH_ORDER="global"
-CT_LINUX_V_5_3=y
+# CT_LINUX_V_5_3 is not set
 # CT_LINUX_V_5_2 is not set
 # CT_LINUX_V_5_1 is not set
 # CT_LINUX_V_5_0 is not set
@@ -296,20 +296,20 @@ CT_LINUX_V_5_3=y
 # CT_LINUX_V_3_10 is not set
 # CT_LINUX_V_3_4 is not set
 # CT_LINUX_V_3_2 is not set
-# CT_LINUX_V_2_6_32 is not set
+CT_LINUX_V_2_6_32=y
 # CT_LINUX_NO_VERSIONS is not set
-CT_LINUX_VERSION="5.3.1"
+CT_LINUX_VERSION="2.6.32.71"
 CT_LINUX_MIRRORS="$(CT_Mirrors kernel.org linux ${CT_LINUX_VERSION})"
 CT_LINUX_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_LINUX_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_LINUX_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_LINUX_SIGNATURE_FORMAT="unpacked/.sign"
-CT_LINUX_later_than_4_8=y
-CT_LINUX_4_8_or_later=y
-CT_LINUX_later_than_3_7=y
-CT_LINUX_3_7_or_later=y
-CT_LINUX_later_than_3_2=y
-CT_LINUX_3_2_or_later=y
+CT_LINUX_4_8_or_older=y
+CT_LINUX_older_than_4_8=y
+CT_LINUX_3_7_or_older=y
+CT_LINUX_older_than_3_7=y
+CT_LINUX_3_2_or_older=y
+CT_LINUX_older_than_3_2=y
 CT_KERNEL_LINUX_VERBOSITY_0=y
 # CT_KERNEL_LINUX_VERBOSITY_1 is not set
 # CT_KERNEL_LINUX_VERBOSITY_2 is not set
@@ -523,7 +523,7 @@ CT_CC_GCC_CONFIG_TLS=m
 # Optimisation features
 #
 CT_CC_GCC_USE_GRAPHITE=y
-CT_CC_GCC_USE_LTO=y
+# CT_CC_GCC_USE_LTO is not set
 
 #
 # Settings for libraries running on target
