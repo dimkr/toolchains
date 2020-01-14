@@ -4,3 +4,5 @@
 /*.tar.xz
 /out
 /ccache
+/config-armeb-any32-linux-musleabi
+/config-mipsel-any32-linux-musl
