@@ -596,23 +596,6 @@ CT_GMP_later_than_5_0_0=y
 CT_GMP_5_0_0_or_later=y
 CT_GMP_REQUIRE_5_0_0_or_later=y
 # CT_COMP_LIBS_ISL is not set
-# CT_ISL_SRC_RELEASE is not set
-# CT_ISL_SRC_DEVEL is not set
-# CT_ISL_SRC_CUSTOM is not set
-# CT_ISL_PATCH_GLOBAL is not set
-# CT_ISL_PATCH_BUNDLED is not set
-# CT_ISL_PATCH_LOCAL is not set
-# CT_ISL_PATCH_BUNDLED_LOCAL is not set
-# CT_ISL_PATCH_LOCAL_BUNDLED is not set
-# CT_ISL_PATCH_NONE is not set
-# CT_ISL_V_0_22 is not set
-# CT_ISL_V_0_21 is not set
-# CT_ISL_V_0_20 is not set
-# CT_ISL_V_0_19 is not set
-# CT_ISL_V_0_18 is not set
-# CT_ISL_V_0_17 is not set
-# CT_ISL_V_0_16 is not set
-# CT_ISL_V_0_15 is not set
 # CT_COMP_LIBS_LIBELF is not set
 # CT_COMP_LIBS_LIBICONV is not set
 CT_COMP_LIBS_MPC=y
