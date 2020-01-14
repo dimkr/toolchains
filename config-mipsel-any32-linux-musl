@@ -4,8 +4,6 @@
 #
 CT_CONFIGURE_has_static_link=y
 CT_CONFIGURE_has_cxx11=y
-CT_CONFIGURE_has_lzip=y
-CT_CONFIGURE_has_wget=y
 CT_CONFIGURE_has_curl=y
 CT_CONFIGURE_has_make_3_81_or_newer=y
 CT_CONFIGURE_has_make_4_0_or_newer=y
@@ -13,12 +11,9 @@ CT_CONFIGURE_has_libtool_2_4_or_newer=y
 CT_CONFIGURE_has_libtoolize_2_4_or_newer=y
 CT_CONFIGURE_has_autoconf_2_65_or_newer=y
 CT_CONFIGURE_has_autoreconf_2_65_or_newer=y
+CT_CONFIGURE_has_automake_1_15_or_newer=y
 CT_CONFIGURE_has_gnu_m4_1_4_12_or_newer=y
-CT_CONFIGURE_has_python_3_4_or_newer=y
 CT_CONFIGURE_has_bison_2_7_or_newer=y
-CT_CONFIGURE_has_python=y
-CT_CONFIGURE_has_svn=y
-CT_CONFIGURE_has_git=y
 CT_CONFIGURE_has_md5sum=y
 CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
@@ -60,7 +55,6 @@ CT_STRIP_HOST_TOOLCHAIN_EXECUTABLES=y
 #
 # Downloading
 #
-# CT_DOWNLOAD_AGENT_WGET is not set
 CT_DOWNLOAD_AGENT_CURL=y
 # CT_DOWNLOAD_AGENT_NONE is not set
 # CT_FORBID_DOWNLOAD is not set
@@ -259,6 +253,7 @@ CT_LINUX_PATCH_GLOBAL=y
 # CT_LINUX_PATCH_LOCAL_BUNDLED is not set
 # CT_LINUX_PATCH_NONE is not set
 CT_LINUX_PATCH_ORDER="global"
+# CT_LINUX_V_5_4 is not set
 # CT_LINUX_V_5_3 is not set
 # CT_LINUX_V_5_2 is not set
 # CT_LINUX_V_5_1 is not set
@@ -336,7 +331,8 @@ CT_BINUTILS_PATCH_GLOBAL=y
 # CT_BINUTILS_PATCH_LOCAL_BUNDLED is not set
 # CT_BINUTILS_PATCH_NONE is not set
 CT_BINUTILS_PATCH_ORDER="global"
-CT_BINUTILS_V_2_32=y
+CT_BINUTILS_V_2_33=y
+# CT_BINUTILS_V_2_32 is not set
 # CT_BINUTILS_V_2_31 is not set
 # CT_BINUTILS_V_2_30 is not set
 # CT_BINUTILS_V_2_29 is not set
@@ -344,7 +340,7 @@ CT_BINUTILS_V_2_32=y
 # CT_BINUTILS_V_2_27 is not set
 # CT_BINUTILS_V_2_26 is not set
 # CT_BINUTILS_NO_VERSIONS is not set
-CT_BINUTILS_VERSION="2.32"
+CT_BINUTILS_VERSION="2.33.1"
 CT_BINUTILS_MIRRORS="$(CT_Mirrors GNU binutils) $(CT_Mirrors sourceware binutils/releases)"
 CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -371,6 +367,7 @@ CT_BINUTILS_LINKERS_LIST="ld"
 CT_BINUTILS_LINKER_DEFAULT="bfd"
 # CT_BINUTILS_PLUGINS is not set
 CT_BINUTILS_RELRO=y
+CT_BINUTILS_DETERMINISTIC_ARCHIVES=y
 CT_BINUTILS_EXTRA_CONFIG_ARRAY=""
 # CT_BINUTILS_FOR_TARGET is not set
 CT_ALL_BINUTILS_CHOICES="BINUTILS"
@@ -403,7 +400,8 @@ CT_MUSL_PATCH_GLOBAL=y
 # CT_MUSL_PATCH_LOCAL_BUNDLED is not set
 # CT_MUSL_PATCH_NONE is not set
 CT_MUSL_PATCH_ORDER="global"
-CT_MUSL_V_1_1_23=y
+CT_MUSL_V_1_1_24=y
+# CT_MUSL_V_1_1_23 is not set
 # CT_MUSL_V_1_1_22 is not set
 # CT_MUSL_V_1_1_21 is not set
 # CT_MUSL_V_1_1_20 is not set
@@ -412,7 +410,7 @@ CT_MUSL_V_1_1_23=y
 # CT_MUSL_V_1_1_17 is not set
 # CT_MUSL_V_1_1_16 is not set
 # CT_MUSL_NO_VERSIONS is not set
-CT_MUSL_VERSION="1.1.23"
+CT_MUSL_VERSION="1.1.24"
 CT_MUSL_MIRRORS="http://www.musl-libc.org/releases"
 CT_MUSL_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_MUSL_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -504,7 +502,7 @@ CT_CC_GCC_CONFIG_TLS=m
 #
 # Optimisation features
 #
-CT_CC_GCC_USE_GRAPHITE=y
+# CT_CC_GCC_USE_GRAPHITE is not set
 # CT_CC_GCC_USE_LTO is not set
 
 #
@@ -597,47 +595,7 @@ CT_GMP_5_1_0_or_later=y
 CT_GMP_later_than_5_0_0=y
 CT_GMP_5_0_0_or_later=y
 CT_GMP_REQUIRE_5_0_0_or_later=y
-CT_COMP_LIBS_ISL=y
-CT_COMP_LIBS_ISL_PKG_KSYM="ISL"
-CT_ISL_DIR_NAME="isl"
-CT_ISL_PKG_NAME="isl"
-CT_ISL_SRC_RELEASE=y
-# CT_ISL_SRC_DEVEL is not set
-# CT_ISL_SRC_CUSTOM is not set
-CT_ISL_PATCH_GLOBAL=y
-# CT_ISL_PATCH_BUNDLED is not set
-# CT_ISL_PATCH_LOCAL is not set
-# CT_ISL_PATCH_BUNDLED_LOCAL is not set
-# CT_ISL_PATCH_LOCAL_BUNDLED is not set
-# CT_ISL_PATCH_NONE is not set
-CT_ISL_PATCH_ORDER="global"
-CT_ISL_V_0_21=y
-# CT_ISL_V_0_20 is not set
-# CT_ISL_V_0_19 is not set
-# CT_ISL_V_0_18 is not set
-# CT_ISL_V_0_17 is not set
-# CT_ISL_V_0_16 is not set
-# CT_ISL_V_0_15 is not set
-# CT_ISL_NO_VERSIONS is not set
-CT_ISL_VERSION="0.21"
-CT_ISL_MIRRORS="http://isl.gforge.inria.fr"
-CT_ISL_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
-CT_ISL_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
-CT_ISL_ARCHIVE_FORMATS=".tar.xz .tar.bz2 .tar.gz"
-CT_ISL_SIGNATURE_FORMAT=""
-CT_ISL_later_than_0_18=y
-CT_ISL_0_18_or_later=y
-CT_ISL_later_than_0_15=y
-CT_ISL_0_15_or_later=y
-CT_ISL_REQUIRE_0_15_or_later=y
-CT_ISL_later_than_0_14=y
-CT_ISL_0_14_or_later=y
-CT_ISL_REQUIRE_0_14_or_later=y
-CT_ISL_later_than_0_13=y
-CT_ISL_0_13_or_later=y
-CT_ISL_later_than_0_12=y
-CT_ISL_0_12_or_later=y
-CT_ISL_REQUIRE_0_12_or_later=y
+# CT_COMP_LIBS_ISL is not set
 # CT_COMP_LIBS_LIBELF is not set
 # CT_COMP_LIBS_LIBICONV is not set
 CT_COMP_LIBS_MPC=y
@@ -695,27 +653,15 @@ CT_MPFR_3_0_0_or_later=y
 CT_MPFR_REQUIRE_3_0_0_or_later=y
 # CT_COMP_LIBS_NCURSES is not set
 # CT_COMP_LIBS_ZLIB is not set
-# CT_ZLIB_SRC_RELEASE is not set
-# CT_ZLIB_SRC_DEVEL is not set
-# CT_ZLIB_SRC_CUSTOM is not set
-# CT_ZLIB_PATCH_GLOBAL is not set
-# CT_ZLIB_PATCH_BUNDLED is not set
-# CT_ZLIB_PATCH_LOCAL is not set
-# CT_ZLIB_PATCH_BUNDLED_LOCAL is not set
-# CT_ZLIB_PATCH_LOCAL_BUNDLED is not set
-# CT_ZLIB_PATCH_NONE is not set
-# CT_ZLIB_V_1_2_11 is not set
 CT_ALL_COMP_LIBS_CHOICES="CLOOG EXPAT GETTEXT GMP ISL LIBELF LIBICONV MPC MPFR NCURSES ZLIB"
 # CT_LIBICONV_NEEDED is not set
 # CT_GETTEXT_NEEDED is not set
 CT_GMP_NEEDED=y
 CT_MPFR_NEEDED=y
-CT_ISL_NEEDED=y
 CT_MPC_NEEDED=y
 # CT_ZLIB_NEEDED is not set
 CT_GMP=y
 CT_MPFR=y
-CT_ISL=y
 CT_MPC=y
 
 #
