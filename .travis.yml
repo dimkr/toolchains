@@ -26,6 +26,16 @@ jobs:
         file: mips-any32-linux-musl.tar.gz
         on:
           repo: dimkr/toolchains
+    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-i386 -e CCACHE_MAXSIZE=1G -e TRIPLET=i386-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+      name: x86
+      deploy:
+        provider: releases
+        api_key:
+          secure: GlIAAfCP2jy8Y6IDQXpJYYrccDhuWothdwrjxXsn12Gzq9R/kvSJrL4tsM6g7ZXiGAK6zJCySl7nJcjLuOFNANmMvzMav9jGRPzLls/qmLohH2HPb7iqEbzWt37UZx9llIz6PIwtCICvOSq8CAfICbtxv5tua1zBFWn0ncC9EDa86G+2Mvll+xF6pjstYihjfMWC/mhfisOKN7GDjpP845bmQJR1WBClha+mqNVDa18jScZySsNWmk/zOPD1/y5Sq357FqlLr31Cvu+7baQVe9XPSMR2UdaeQ870fFlwdklMcneVxOmK6eUkPfzGWxqZqtr9MQMnrIijaWPZjCpnhUZkon4ai+jvpjdtdXb7A3Mzw6s7FcMx7DvNVCvvK2MTB3jDWanW3xU64beEHW3/zGm3UvoAdfb7swlB8nZLthAyaNonwQINVsQRzwd79wyZwKBu1bRy+N6jX1/10+RspBOwylvqHfHzTtmykX4gzbkNaf4G8fafQ+/GjouOF4ysj4Jn/D8jYRbWVI35UwZgjmrJDO48+sEcdydyE+gDphps2Tke1OpzdxkCOuYwaYqogJA1LrmTaKbG++dI7r1abn1FZRKVi4yGZ/skmKQnBde8CZ7mC7rSTU0zDxXbx06MCspeJh+IYQL33eW5+46lAm9MWKVYhEnrzA5aJSCC3pI=
+        skip_cleanup: true
+        file: i386-any32-linux-musl.tar.gz
+        on:
+          repo: dimkr/toolchains
     - stage: 2
       script:
         - patch config-arm-any32-linux-musleabi -o config-armeb-any32-linux-musleabi < arm-armeb.diff
@@ -62,5 +72,6 @@ cache:
     - src
     - ccache-arm
     - ccache-mips
+    - ccache-i386
     - ccache-armeb
     - ccache-mipsel
