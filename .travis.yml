@@ -16,7 +16,6 @@ jobs:
         file: arm-any32-linux-musleabi.tar.gz
         on:
           repo: dimkr/toolchains
-          tags: true
     - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mips -e CCACHE_MAXSIZE=1G -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
       name: "MIPS (big endian)"
       deploy:
@@ -27,7 +26,6 @@ jobs:
         file: mips-any32-linux-musl.tar.gz
         on:
           repo: dimkr/toolchains
-          tags: true
     - stage: 2
       script:
         - patch config-arm-any32-linux-musleabi -o config-armeb-any32-linux-musleabi < arm-armeb.diff
@@ -41,7 +39,6 @@ jobs:
         file: armeb-any32-linux-musleabi.tar.gz
         on:
           repo: dimkr/toolchains
-          tags: true
     - script:
         - patch config-mips-any32-linux-musl -o config-mipsel-any32-linux-musl < mips-mipsel.diff
         - docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mipsel -e CCACHE_MAXSIZE=1G -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
@@ -54,13 +51,11 @@ jobs:
         file: mipsel-any32-linux-musl.tar.gz
         on:
           repo: dimkr/toolchains
-          tags: true
 
 after_success:
   - git config --local user.name "Dima Krasner"
   - git config --local user.email dima@dimakrasner.com
   - git tag -f $TRAVIS_BRANCH-$(git log --format=%h -1)
-  - git push origin $TRAVIS_BRANCH-$(git log --format=%h -1)
 
 cache:
   directories:
