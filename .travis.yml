@@ -6,7 +6,7 @@ services:
 jobs:
   include:
     - stage: 1
-      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-arm -e TRIPLET=arm-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
+      script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-arm -e CCACHE_MAXSIZE=1G -e TRIPLET=arm-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARM (little endian)
       deploy:
         provider: releases
@@ -16,7 +16,7 @@ jobs:
         file: arm-any32-linux-musleabi.tar.gz
         on:
           repo: dimkr/toolchains
-    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mips -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+    - script: docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mips -e CCACHE_MAXSIZE=1G -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
       name: "MIPS1 (big endian)"
       deploy:
         provider: releases
@@ -29,7 +29,7 @@ jobs:
     - stage: 2
       script:
         - patch config-arm-any32-linux-musleabi -o config-armeb-any32-linux-musleabi < arm-armeb.diff
-        - docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-armeb -e TRIPLET=armeb-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
+        - docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-armeb -e CCACHE_MAXSIZE=1G -e TRIPLET=armeb-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
       name: ARM (big endian)
       deploy:
         provider: releases
@@ -41,7 +41,7 @@ jobs:
           repo: dimkr/toolchains
     - script:
         - patch config-mips-any32-linux-musl -o config-mipsel-any32-linux-musl < mips-mipsel.diff
-        - docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mipsel -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+        - docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mipsel -e CCACHE_MAXSIZE=1G -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
       name: "MIPS1 (little endian)"
       deploy:
         provider: releases
