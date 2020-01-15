@@ -16,8 +16,6 @@ ct-ng build
 grep -e ^CT_TARGET_CFLAGS= -e ^CT_TARGET_LDFLAGS= .config > /tmp/flags
 . /tmp/flags
 cat << EOF > /opt/x-tools/$TRIPLET/activate
-#!/bin/sh
-
 export PATH=\$PATH:/opt/x-tools/$TRIPLET/bin
 export CFLAGS="$CT_TARGET_CFLAGS \$CFLAGS"
 export LDFLAGS="$CT_TARGET_LDFLAGS \$LDFLAGS"
