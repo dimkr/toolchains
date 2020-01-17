@@ -33,15 +33,6 @@ set -x
 cp -f config-$TRIPLET .config
 ct-ng build
 
-grep -e ^CT_TARGET_CFLAGS= -e ^CT_TARGET_LDFLAGS= .config > /tmp/flags
-. /tmp/flags
-cat << EOF > /opt/x-tools/$TRIPLET/activate
-export PATH=\$PATH:/opt/x-tools/$TRIPLET/bin
-export CFLAGS="$CT_TARGET_CFLAGS \$CFLAGS"
-export LDFLAGS="$CT_TARGET_LDFLAGS \$LDFLAGS"
-EOF
-chmod 755 /opt/x-tools/$TRIPLET/activate
-
 family=`echo $TRIPLET | cut -f 1 -d -`
 endian=little
 case $family in
@@ -63,6 +54,9 @@ case $family in
 		;;
 esac
 
+grep -e ^CT_TARGET_CFLAGS= -e ^CT_TARGET_LDFLAGS= .config > /tmp/flags
+. /tmp/flags
+
 cat << EOF > /usr/local/share/meson/cross/$TRIPLET
 [host_machine]
 system = 'linux'
@@ -82,15 +76,22 @@ c_link_args = ['`echo $CT_TARGET_LDFLAGS | sed s/\ /"\', \'"/g`']
 EOF
 chmod 644 /usr/local/share/meson/cross/$TRIPLET
 
+git clone https://github.com/dimkr/loksh
+cd loksh
+meson --cross-file=$TRIPLET build
+ninja -C build
+
+cat << EOF > /opt/x-tools/$TRIPLET/activate
+export PATH=\$PATH:/opt/x-tools/$TRIPLET/bin
+export CFLAGS="$CT_TARGET_CFLAGS \$CFLAGS"
+export LDFLAGS="$CT_TARGET_LDFLAGS \$LDFLAGS"
+EOF
+chmod 755 /opt/x-tools/$TRIPLET/activate
+
 . /opt/x-tools/$TRIPLET/activate
 /bin/echo -e "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {puts(\"hello\"); free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-gcc $CFLAGS -x c -o hello-$TRIPLET - $LDFLAGS -lm
 file hello-$TRIPLET > /tmp/test-$TRIPLET
 /opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A hello-$TRIPLET >> /tmp/test-$TRIPLET
 diff -u test-$TRIPLET /tmp/test-$TRIPLET
-
-git clone https://github.com/dimkr/loksh
-cd loksh
-meson --cross-file=$TRIPLET build
-ninja -C build
 
 tar -c /opt/x-tools/$TRIPLET /usr/local/share/meson/cross/$TRIPLET | gzip -9 > ../$TRIPLET.tar.gz
