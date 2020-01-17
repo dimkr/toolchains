@@ -95,9 +95,9 @@ chmod 755 /opt/x-tools/$TRIPLET/activate
 
 for i in hello-$TRIPLET build/ksh
 do
-	file $i | sed s/.*:\ // > /tmp/test-$i-$TRIPLET
-	/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A $i | grep -v '00[1-9]' | cat >> /tmp/test-$i-$TRIPLET
-	diff -u test-$TRIPLET /tmp/test-$i-$TRIPLET
+	file $i | sed s/.*:\ // > /tmp/test-${i#*/}-$TRIPLET
+	/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A $i | grep -v '00[1-9]' | cat >> /tmp/test-${i#*/}-$TRIPLET
+	diff -u test-$TRIPLET /tmp/test-${i#*/}-$TRIPLET
 done
 
 tar -c /opt/x-tools/$TRIPLET /usr/local/share/meson/cross/$TRIPLET | gzip -9 > $TRIPLET.tar.gz
