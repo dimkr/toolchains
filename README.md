@@ -38,6 +38,18 @@ cd strace-5.4
 make
 ```
 
+Another way to use the toolchains is using the [Meson](https://mesonbuild.com) build system: each toolchain has a matching cross-file under /usr/local/share/meson/cross.
+
+For example, to build [papaw](https://github.com/dimkr/papaw) for ARM:
+
+```
+HOST=arm-any32-linux-musleabi
+git clone --recursive https://github.com/dimkr/papaw
+cd papaw
+meson --cross-file=$HOST build
+ninja -C build
+```
+
 ## Legal Information
 
 This is free and unencumbered software released under the terms of the MIT license; see COPYING for the license text.
