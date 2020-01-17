@@ -45,7 +45,7 @@ chmod 755 /opt/x-tools/$TRIPLET/activate
 . /opt/x-tools/$TRIPLET/activate
 /bin/echo -e "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {puts(\"hello\"); free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-gcc $CFLAGS -x c -o hello-$TRIPLET - $LDFLAGS -lm
 file hello-$TRIPLET > /tmp/test-$TRIPLET
-/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A hello-$TRIPLET | grep -v '00[1-9]' >> /tmp/test-$TRIPLET
+/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A hello-$TRIPLET | grep -v '00[1-9]' | cat >> /tmp/test-$TRIPLET
 diff -u test-$TRIPLET /tmp/test-$TRIPLET
 
 tar -c /opt/x-tools/$TRIPLET | gzip -9 > $TRIPLET.tar.gz
