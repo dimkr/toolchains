@@ -1,4 +1,4 @@
-hello-mipsel-any32-linux-musl: ELF 32-bit LSB executable, MIPS, MIPS-I version 1 (SYSV), statically linked, with debug_info, not stripped
+ELF 32-bit LSB executable, MIPS, MIPS-I version 1 (SYSV), statically linked, with debug_info, not stripped
 Attribute Section: gnu
 File Attributes
   Tag_GNU_MIPS_ABI_FP: Soft float
