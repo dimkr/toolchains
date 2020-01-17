@@ -81,6 +81,7 @@ git clone https://github.com/dimkr/loksh
 cd loksh
 meson --cross-file=$TRIPLET build
 ninja -C build
+cd ..
 
 cat << EOF > /opt/x-tools/$TRIPLET/activate
 export PATH=\$PATH:/opt/x-tools/$TRIPLET/bin
@@ -95,4 +96,4 @@ file hello-$TRIPLET > /tmp/test-$TRIPLET
 /opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A hello-$TRIPLET >> /tmp/test-$TRIPLET
 diff -u test-$TRIPLET /tmp/test-$TRIPLET
 
-tar -c /opt/x-tools/$TRIPLET /usr/local/share/meson/cross/$TRIPLET | gzip -9 > ../$TRIPLET.tar.gz
+tar -c /opt/x-tools/$TRIPLET /usr/local/share/meson/cross/$TRIPLET | gzip -9 > $TRIPLET.tar.gz
