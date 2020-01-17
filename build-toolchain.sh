@@ -57,6 +57,7 @@ esac
 grep -e ^CT_TARGET_CFLAGS= -e ^CT_TARGET_LDFLAGS= .config > /tmp/flags
 . /tmp/flags
 
+mkdir -p /usr/local/share/meson/cross
 cat << EOF > /usr/local/share/meson/cross/$TRIPLET
 [host_machine]
 system = 'linux'
