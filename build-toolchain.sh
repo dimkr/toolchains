@@ -79,7 +79,7 @@ chmod 644 /usr/local/share/meson/cross/$TRIPLET
 
 git clone https://github.com/dimkr/loksh
 cd loksh
-meson --cross-file=$TRIPLET build
+meson --cross-file=$TRIPLET --buildtype=release build
 ninja -C build
 cd ..
 
@@ -95,6 +95,7 @@ chmod 755 /opt/x-tools/$TRIPLET/activate
 
 for i in hello-$TRIPLET loksh/build/ksh
 do
+	$TRIPLET-strip -s -R.note -R.comment $i
 	file $i | sed s/.*:\ // > /tmp/test-${i##*/}-$TRIPLET
 	/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A $i | grep -v '00[1-9]' | cat >> /tmp/test-${i##*/}-$TRIPLET
 	diff -u test-$TRIPLET /tmp/test-${i##*/}-$TRIPLET
