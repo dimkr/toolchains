@@ -62,7 +62,7 @@ cat << EOF > /usr/local/share/meson/cross/$TRIPLET
 [host_machine]
 system = 'linux'
 cpu_family = '$family'
-cpu = '`echo $CT_TARGET_CFLAGS | cut -f 2 -d = |cut -f 1 -d ' '`'
+cpu = '`echo $CT_TARGET_CFLAGS | cut -f 2 -d = | cut -f 1 -d ' '`'
 endian = '$endian'
 
 [binaries]
