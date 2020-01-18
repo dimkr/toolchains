@@ -33,8 +33,56 @@ set -x
 cp -f config-$TRIPLET .config
 ct-ng build
 
+family=`echo $TRIPLET | cut -f 1 -d -`
+endian=little
+case $family in
+	armeb)
+		family=arm
+		endian=big
+		;;
+
+	i?86)
+		family=x86
+		;;
+
+	mips)
+		endian=big
+		;;
+
+	mipsel)
+		family=mips
+		;;
+esac
+
 grep -e ^CT_TARGET_CFLAGS= -e ^CT_TARGET_LDFLAGS= .config > /tmp/flags
 . /tmp/flags
+
+mkdir -p /usr/local/share/meson/cross
+cat << EOF > /usr/local/share/meson/cross/$TRIPLET
+[host_machine]
+system = 'linux'
+cpu_family = '$family'
+cpu = '`echo $CT_TARGET_CFLAGS | cut -f 2 -d = | cut -f 1 -d ' '`'
+endian = '$endian'
+
+[binaries]
+c = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-gcc'
+cpp = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-g++'
+ar = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-ar'
+strip = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-strip'
+
+[properties]
+c_args = ['`echo $CT_TARGET_CFLAGS | sed s/\ /"\', \'"/g`']
+c_link_args = ['`echo $CT_TARGET_LDFLAGS | sed s/\ /"\', \'"/g`']
+EOF
+chmod 644 /usr/local/share/meson/cross/$TRIPLET
+
+git clone https://github.com/dimkr/loksh
+cd loksh
+meson --cross-file=$TRIPLET --buildtype=release build
+ninja -C build
+cd ..
+
 cat << EOF > /opt/x-tools/$TRIPLET/activate
 export PATH=\$PATH:/opt/x-tools/$TRIPLET/bin
 export CFLAGS="$CT_TARGET_CFLAGS \$CFLAGS"
@@ -44,8 +92,13 @@ chmod 755 /opt/x-tools/$TRIPLET/activate
 
 . /opt/x-tools/$TRIPLET/activate
 /bin/echo -e "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {puts(\"hello\"); free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-gcc $CFLAGS -x c -o hello-$TRIPLET - $LDFLAGS -lm
-file hello-$TRIPLET > /tmp/test-$TRIPLET
-/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A hello-$TRIPLET >> /tmp/test-$TRIPLET
-diff -u test-$TRIPLET /tmp/test-$TRIPLET
 
-tar -c /opt/x-tools/$TRIPLET | gzip -9 > $TRIPLET.tar.gz
+for i in hello-$TRIPLET loksh/build/ksh
+do
+	$TRIPLET-strip -s -R.note -R.comment $i
+	file $i | sed s/.*:\ // > /tmp/test-${i##*/}-$TRIPLET
+	/opt/x-tools/$TRIPLET/bin/$TRIPLET-readelf -A $i | grep -v '00[1-9]' | cat >> /tmp/test-${i##*/}-$TRIPLET
+	diff -u test-$TRIPLET /tmp/test-${i##*/}-$TRIPLET
+done
+
+tar -c /opt/x-tools/$TRIPLET /usr/local/share/meson/cross/$TRIPLET | gzip -9 > $TRIPLET.tar.gz

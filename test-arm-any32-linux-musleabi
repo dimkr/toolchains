@@ -1,4 +1,4 @@
-hello-arm-any32-linux-musleabi: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
 Attribute Section: aeabi
 File Attributes
   Tag_CPU_name: "4T"
