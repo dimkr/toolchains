@@ -67,7 +67,7 @@ endian = '$endian'
 
 [binaries]
 c = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-gcc'
-cpp = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-g++'
+as = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-as'
 ar = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-ar'
 strip = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-strip'
 
