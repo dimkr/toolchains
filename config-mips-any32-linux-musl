@@ -13,7 +13,10 @@ CT_CONFIGURE_has_autoconf_2_65_or_newer=y
 CT_CONFIGURE_has_autoreconf_2_65_or_newer=y
 CT_CONFIGURE_has_automake_1_15_or_newer=y
 CT_CONFIGURE_has_gnu_m4_1_4_12_or_newer=y
+CT_CONFIGURE_has_python_3_4_or_newer=y
 CT_CONFIGURE_has_bison_2_7_or_newer=y
+CT_CONFIGURE_has_python=y
+CT_CONFIGURE_has_git=y
 CT_CONFIGURE_has_md5sum=y
 CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
@@ -44,6 +47,7 @@ CT_SAVE_TARBALLS=y
 # CT_TARBALLS_BUILDROOT_LAYOUT is not set
 CT_WORK_DIR="${CT_TOP_DIR}/.build"
 CT_BUILD_TOP_DIR="${CT_WORK_DIR:-${CT_TOP_DIR}/.build}/${CT_HOST:+HOST-${CT_HOST}/}${CT_TARGET}"
+CT_BUILD_DIR="${CT_BUILD_TOP_DIR}/build"
 CT_PREFIX_DIR="/opt/x-tools/${CT_HOST:+HOST-${CT_HOST}/}${CT_TARGET}"
 CT_RM_RF_PREFIX_DIR=y
 CT_REMOVE_DOCS=y
@@ -253,6 +257,7 @@ CT_LINUX_PATCH_GLOBAL=y
 # CT_LINUX_PATCH_LOCAL_BUNDLED is not set
 # CT_LINUX_PATCH_NONE is not set
 CT_LINUX_PATCH_ORDER="global"
+# CT_LINUX_V_5_5 is not set
 # CT_LINUX_V_5_4 is not set
 # CT_LINUX_V_5_3 is not set
 # CT_LINUX_V_5_2 is not set
@@ -331,6 +336,7 @@ CT_BINUTILS_PATCH_GLOBAL=y
 # CT_BINUTILS_PATCH_LOCAL_BUNDLED is not set
 # CT_BINUTILS_PATCH_NONE is not set
 CT_BINUTILS_PATCH_ORDER="global"
+# CT_BINUTILS_V_2_34 is not set
 CT_BINUTILS_V_2_33=y
 # CT_BINUTILS_V_2_32 is not set
 # CT_BINUTILS_V_2_31 is not set
@@ -481,6 +487,8 @@ CT_GCC_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GCC_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GCC_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_GCC_SIGNATURE_FORMAT=""
+CT_GCC_8_or_older=y
+CT_GCC_older_than_8=y
 CT_GCC_later_than_7=y
 CT_GCC_7_or_later=y
 CT_GCC_later_than_6=y
@@ -582,6 +590,7 @@ CT_GMP_PATCH_GLOBAL=y
 # CT_GMP_PATCH_LOCAL_BUNDLED is not set
 # CT_GMP_PATCH_NONE is not set
 CT_GMP_PATCH_ORDER="global"
+# CT_GMP_V_6_2 is not set
 CT_GMP_V_6_1=y
 # CT_GMP_NO_VERSIONS is not set
 CT_GMP_VERSION="6.1.2"
