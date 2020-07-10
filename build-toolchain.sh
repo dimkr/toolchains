@@ -70,6 +70,7 @@ c = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-gcc'
 as = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-as'
 ar = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-ar'
 strip = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-strip'
+cmake = 'cmake'
 
 [properties]
 c_args = ['`echo $CT_TARGET_CFLAGS | sed s/\ /"\', \'"/g`']
