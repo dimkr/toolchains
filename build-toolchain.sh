@@ -66,7 +66,7 @@ cpu = '`echo $CT_TARGET_CFLAGS | cut -f 2 -d = | cut -f 1 -d ' '`'
 endian = '$endian'
 
 [binaries]
-c = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-gcc'
+c = ['ccache', '/opt/x-tools/$TRIPLET/bin/$TRIPLET-gcc']
 as = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-as'
 ar = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-ar'
 strip = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-strip'
