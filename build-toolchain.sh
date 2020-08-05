@@ -71,6 +71,7 @@ as = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-as'
 ar = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-ar'
 strip = '/opt/x-tools/$TRIPLET/bin/$TRIPLET-strip'
 cmake = 'cmake'
+exe_wrapper = 'qemu-`echo $TRIPLET | cut -f 1 -d -`-static'
 
 [properties]
 c_args = ['`echo $CT_TARGET_CFLAGS | sed s/\ /"\', \'"/g`']
