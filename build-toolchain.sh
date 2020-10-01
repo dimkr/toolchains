@@ -88,14 +88,16 @@ cd ..
 cat << EOF > /opt/x-tools/$TRIPLET/activate
 export PATH=\$PATH:/opt/x-tools/$TRIPLET/bin
 export CFLAGS="$CT_TARGET_CFLAGS \$CFLAGS"
+export CXXFLAGS="$CT_TARGET_CFLAGS \$CXXFLAGS"
 export LDFLAGS="$CT_TARGET_LDFLAGS \$LDFLAGS"
 EOF
 chmod 755 /opt/x-tools/$TRIPLET/activate
 
 . /opt/x-tools/$TRIPLET/activate
 /bin/echo -e "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {puts(\"hello\"); free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-gcc $CFLAGS -x c -o hello-$TRIPLET - $LDFLAGS -lm
+/bin/echo -e "#include <iostream>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {std::cout << \"hello\"; free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-g++ $CFLAGS -x c++ -o hello-cpp-$TRIPLET - $LDFLAGS -lm
 
-for i in hello-$TRIPLET loksh/build/ksh
+for i in hello-$TRIPLET hello-cpp-$TRIPLET loksh/build/ksh
 do
 	$TRIPLET-strip -s -R.note -R.comment $i
 	file $i | sed s/.*:\ // > /tmp/test-${i##*/}-$TRIPLET
