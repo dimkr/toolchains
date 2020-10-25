@@ -11,7 +11,7 @@
 
 ## Overview
 
-This repository is a CI/CD pipeline for a collection of cross-compilation toolchains that produce static binaries, carefully optimized for maximum hardware compatibility and small size.
+This repository is a CI/CD pipeline for a collection of cross-compilation C/C++ toolchains that produce static binaries, carefully optimized for maximum hardware compatibility and small size.
 
 These toolchains are ideal for training, research, debugging, CI and development of cross-platform software.
 
