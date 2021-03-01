@@ -97,7 +97,7 @@ chmod 755 /opt/x-tools/$TRIPLET/activate
 /bin/echo -e "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {puts(\"hello\"); free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-gcc $CFLAGS -x c -o hello-$TRIPLET - $LDFLAGS -lm
 /bin/echo -e "#include <iostream>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\nint main() {std::cout << \"hello\"; free(malloc(1)); return (int)floor((double)time(NULL)/3);}" | $TRIPLET-g++ $CFLAGS -x c++ -o hello-cpp-$TRIPLET - $LDFLAGS -lm
 
-for i in hello-$TRIPLET hello-cpp-$TRIPLET loksh/build/ksh
+for i in hello-$TRIPLET hello-cpp-$TRIPLET loksh/build-$TRIPLET/ksh
 do
 	$TRIPLET-strip -s -R.note -R.comment $i
 	file $i | sed s/.*:\ // > /tmp/test-${i##*/}-$TRIPLET
