@@ -79,10 +79,10 @@ c_link_args = ['`echo $CT_TARGET_LDFLAGS | sed s/\ /"\', \'"/g`']
 EOF
 chmod 644 /usr/local/share/meson/cross/$TRIPLET
 
-git clone https://github.com/dimkr/loksh
+[ -d loksh ] || git clone https://github.com/dimkr/loksh
 cd loksh
-meson --cross-file=$TRIPLET --buildtype=release build
-ninja -C build
+meson --cross-file=$TRIPLET --buildtype=release build-$TRIPLET
+ninja -C build-$TRIPLET
 cd ..
 
 cat << EOF > /opt/x-tools/$TRIPLET/activate
