@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# crosstool-NG  Configuration
+# crosstool-NG 1.24.0.317_77d75eb Configuration
 #
 CT_CONFIGURE_has_static_link=y
 CT_CONFIGURE_has_cxx11=y
@@ -24,6 +24,9 @@ CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
 CT_CONFIGURE_has_sha512sum=y
 CT_CONFIGURE_has_install_with_strip_program=y
+CT_VERSION="1.24.0.317_77d75eb"
+CT_VCHECK=""
+CT_CONFIG_VERSION_ENV="3"
 CT_CONFIG_VERSION_CURRENT="3"
 CT_CONFIG_VERSION="3"
 CT_MODULES=y
@@ -119,6 +122,7 @@ CT_LOG_LEVEL_MAX="INFO"
 # CT_LOG_SEE_TOOLS_WARN is not set
 # CT_LOG_PROGRESS_BAR is not set
 # CT_LOG_TO_FILE is not set
+# end of Paths and misc options
 
 #
 # Target options
@@ -127,6 +131,7 @@ CT_LOG_LEVEL_MAX="INFO"
 # CT_ARCH_ARC is not set
 # CT_ARCH_ARM is not set
 # CT_ARCH_AVR is not set
+# CT_ARCH_C6X is not set
 # CT_ARCH_M68K is not set
 # CT_ARCH_MICROBLAZE is not set
 CT_ARCH_MIPS=y
@@ -134,6 +139,7 @@ CT_ARCH_MIPS=y
 # CT_ARCH_MSP430 is not set
 # CT_ARCH_NIOS2 is not set
 # CT_ARCH_POWERPC is not set
+# CT_ARCH_PRU is not set
 # CT_ARCH_RISCV is not set
 # CT_ARCH_S390 is not set
 # CT_ARCH_SH is not set
@@ -151,7 +157,7 @@ CT_ARCH_MIPS_SHOW=y
 CT_ARCH_MIPS_PKG_KSYM=""
 CT_ARCH_mips_o32=y
 CT_ARCH_mips_ABI="32"
-CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 POWERPC RISCV S390 SH SPARC X86 XTENSA"
+CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR C6X M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 POWERPC PRU RISCV S390 SH SPARC X86 XTENSA"
 CT_ARCH_SUFFIX=""
 # CT_OMIT_TARGET_VENDOR is not set
 
@@ -186,6 +192,7 @@ CT_ARCH_FLOAT_SW=y
 CT_TARGET_CFLAGS="-march=mips1 -mtune=mips32 -Os -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
 CT_TARGET_LDFLAGS="-Wl,--gc-sections -Wl,--sort-common"
 CT_ARCH_FLOAT="soft"
+# end of Target options
 
 #
 # Toolchain options
@@ -232,6 +239,7 @@ CT_BUILD_SUFFIX=""
 # Misc options
 #
 # CT_TOOLCHAIN_ENABLE_NLS is not set
+# end of Toolchain options
 
 #
 # Operating System
@@ -248,6 +256,9 @@ CT_KERNEL_LINUX_SHOW=y
 #
 CT_KERNEL_LINUX_PKG_KSYM="LINUX"
 CT_LINUX_DIR_NAME="linux"
+CT_LINUX_USE_WWW_KERNEL_ORG=y
+# CT_LINUX_USE_ORACLE is not set
+CT_LINUX_USE="LINUX"
 CT_LINUX_PKG_NAME="linux"
 CT_LINUX_SRC_RELEASE=y
 # CT_LINUX_SRC_DEVEL is not set
@@ -259,7 +270,11 @@ CT_LINUX_PATCH_GLOBAL=y
 # CT_LINUX_PATCH_LOCAL_BUNDLED is not set
 # CT_LINUX_PATCH_NONE is not set
 CT_LINUX_PATCH_ORDER="global"
-# CT_LINUX_V_5_5 is not set
+# CT_LINUX_V_5_11 is not set
+# CT_LINUX_V_5_10 is not set
+# CT_LINUX_V_5_9 is not set
+# CT_LINUX_V_5_8 is not set
+# CT_LINUX_V_5_7 is not set
 # CT_LINUX_V_5_4 is not set
 # CT_LINUX_V_5_3 is not set
 # CT_LINUX_V_5_2 is not set
@@ -286,7 +301,6 @@ CT_LINUX_PATCH_ORDER="global"
 # CT_LINUX_V_3_4 is not set
 # CT_LINUX_V_3_2 is not set
 CT_LINUX_V_2_6_32=y
-# CT_LINUX_NO_VERSIONS is not set
 CT_LINUX_VERSION="2.6.32.71"
 CT_LINUX_MIRRORS="$(CT_Mirrors kernel.org linux ${CT_LINUX_VERSION})"
 CT_LINUX_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -310,6 +324,7 @@ CT_ALL_KERNEL_CHOICES="BARE_METAL LINUX WINDOWS"
 # Common kernel options
 #
 # CT_SHARED_LIBS is not set
+# end of Operating System
 
 #
 # Binary utilities
@@ -326,6 +341,7 @@ CT_BINUTILS_BINUTILS_SHOW=y
 CT_BINUTILS_BINUTILS_PKG_KSYM="BINUTILS"
 CT_BINUTILS_DIR_NAME="binutils"
 CT_BINUTILS_USE_GNU=y
+# CT_BINUTILS_USE_ORACLE is not set
 CT_BINUTILS_USE="BINUTILS"
 CT_BINUTILS_PKG_NAME="binutils"
 CT_BINUTILS_SRC_RELEASE=y
@@ -338,6 +354,7 @@ CT_BINUTILS_PATCH_GLOBAL=y
 # CT_BINUTILS_PATCH_LOCAL_BUNDLED is not set
 # CT_BINUTILS_PATCH_NONE is not set
 CT_BINUTILS_PATCH_ORDER="global"
+# CT_BINUTILS_V_2_36 is not set
 # CT_BINUTILS_V_2_35 is not set
 # CT_BINUTILS_V_2_34 is not set
 CT_BINUTILS_V_2_33=y
@@ -348,7 +365,6 @@ CT_BINUTILS_V_2_33=y
 # CT_BINUTILS_V_2_28 is not set
 # CT_BINUTILS_V_2_27 is not set
 # CT_BINUTILS_V_2_26 is not set
-# CT_BINUTILS_NO_VERSIONS is not set
 CT_BINUTILS_VERSION="2.33.1"
 CT_BINUTILS_MIRRORS="$(CT_Mirrors GNU binutils) $(CT_Mirrors sourceware binutils/releases)"
 CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -380,6 +396,7 @@ CT_BINUTILS_DETERMINISTIC_ARCHIVES=y
 CT_BINUTILS_EXTRA_CONFIG_ARRAY=""
 # CT_BINUTILS_FOR_TARGET is not set
 CT_ALL_BINUTILS_CHOICES="BINUTILS"
+# end of Binary utilities
 
 #
 # C-library
@@ -409,6 +426,7 @@ CT_MUSL_PATCH_GLOBAL=y
 # CT_MUSL_PATCH_LOCAL_BUNDLED is not set
 # CT_MUSL_PATCH_NONE is not set
 CT_MUSL_PATCH_ORDER="global"
+# CT_MUSL_V_1_2_2 is not set
 CT_MUSL_V_1_2_1=y
 # CT_MUSL_V_1_1_24 is not set
 # CT_MUSL_V_1_1_23 is not set
@@ -419,7 +437,6 @@ CT_MUSL_V_1_2_1=y
 # CT_MUSL_V_1_1_18 is not set
 # CT_MUSL_V_1_1_17 is not set
 # CT_MUSL_V_1_1_16 is not set
-# CT_MUSL_NO_VERSIONS is not set
 CT_MUSL_VERSION="1.2.1"
 CT_MUSL_MIRRORS="http://www.musl-libc.org/releases"
 CT_MUSL_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -433,7 +450,7 @@ CT_MUSL_SIGNATURE_FORMAT="packed/.asc"
 # CT_LIBC_MUSL_OPTIMIZE_SPEED is not set
 CT_LIBC_MUSL_OPTIMIZE_SIZE=y
 CT_LIBC_MUSL_OPTIMIZE="size"
-CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE PICOLIBC UCLIBC"
+CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC"
 CT_LIBC_SUPPORT_THREADS_ANY=y
 CT_LIBC_SUPPORT_THREADS_NATIVE=y
 
@@ -441,6 +458,7 @@ CT_LIBC_SUPPORT_THREADS_NATIVE=y
 # Common C library options
 #
 CT_THREADS_NATIVE=y
+# end of C-library
 
 #
 # C compiler
@@ -466,6 +484,7 @@ CT_CC_GCC_PKG_KSYM="GCC"
 CT_GCC_DIR_NAME="gcc"
 CT_GCC_USE_GNU=y
 # CT_GCC_USE_LINARO is not set
+# CT_GCC_USE_ORACLE is not set
 CT_GCC_USE="GCC"
 CT_GCC_PKG_NAME="gcc"
 CT_GCC_SRC_RELEASE=y
@@ -485,7 +504,6 @@ CT_GCC_V_7=y
 # CT_GCC_V_6 is not set
 # CT_GCC_V_5 is not set
 # CT_GCC_V_4_9 is not set
-# CT_GCC_NO_VERSIONS is not set
 CT_GCC_VERSION="7.5.0"
 CT_GCC_MIRRORS="$(CT_Mirrors GNU gcc/gcc-${CT_GCC_VERSION}) $(CT_Mirrors sourceware gcc/releases/gcc-${CT_GCC_VERSION})"
 CT_GCC_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -540,10 +558,11 @@ CT_CC_GCC_LNK_HASH_STYLE_DEFAULT=y
 # CT_CC_GCC_LNK_HASH_STYLE_GNU is not set
 # CT_CC_GCC_LNK_HASH_STYLE_BOTH is not set
 CT_CC_GCC_LNK_HASH_STYLE=""
-CT_CC_GCC_DEC_FLOAT_AUTO=y
-# CT_CC_GCC_DEC_FLOAT_BID is not set
-# CT_CC_GCC_DEC_FLOAT_DPD is not set
+CT_CC_GCC_DEC_FLOATS_AUTO=y
+# CT_CC_GCC_DEC_FLOATS_BID is not set
+# CT_CC_GCC_DEC_FLOATS_DPD is not set
 # CT_CC_GCC_DEC_FLOATS_NO is not set
+CT_CC_GCC_DEC_FLOATS=""
 CT_CC_GCC_HAS_ARCH_OPTIONS=y
 
 #
@@ -564,6 +583,7 @@ CT_CC_LANG_CXX=y
 # CT_CC_LANG_OBJCXX is not set
 # CT_CC_LANG_GOLANG is not set
 CT_CC_LANG_OTHERS=""
+# end of C compiler
 
 #
 # Debug facilities
@@ -573,6 +593,7 @@ CT_CC_LANG_OTHERS=""
 # CT_DEBUG_LTRACE is not set
 # CT_DEBUG_STRACE is not set
 CT_ALL_DEBUG_CHOICES="DUMA GDB LTRACE STRACE"
+# end of Debug facilities
 
 #
 # Companion libraries
@@ -597,7 +618,6 @@ CT_GMP_PATCH_GLOBAL=y
 CT_GMP_PATCH_ORDER="global"
 # CT_GMP_V_6_2 is not set
 CT_GMP_V_6_1=y
-# CT_GMP_NO_VERSIONS is not set
 CT_GMP_VERSION="6.1.2"
 CT_GMP_MIRRORS="https://gmplib.org/download/gmp https://gmplib.org/download/gmp/archive $(CT_Mirrors GNU gmp)"
 CT_GMP_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -626,9 +646,9 @@ CT_MPC_PATCH_GLOBAL=y
 # CT_MPC_PATCH_LOCAL_BUNDLED is not set
 # CT_MPC_PATCH_NONE is not set
 CT_MPC_PATCH_ORDER="global"
+# CT_MPC_V_1_2 is not set
 CT_MPC_V_1_1=y
 # CT_MPC_V_1_0 is not set
-# CT_MPC_NO_VERSIONS is not set
 CT_MPC_VERSION="1.1.0"
 CT_MPC_MIRRORS="http://www.multiprecision.org/downloads $(CT_Mirrors GNU mpc)"
 CT_MPC_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -651,9 +671,9 @@ CT_MPFR_PATCH_GLOBAL=y
 # CT_MPFR_PATCH_LOCAL_BUNDLED is not set
 # CT_MPFR_PATCH_NONE is not set
 CT_MPFR_PATCH_ORDER="global"
+# CT_MPFR_V_4_1 is not set
 CT_MPFR_V_4_0=y
 # CT_MPFR_V_3_1 is not set
-# CT_MPFR_NO_VERSIONS is not set
 CT_MPFR_VERSION="4.0.2"
 CT_MPFR_MIRRORS="http://www.mpfr.org/mpfr-${CT_MPFR_VERSION} $(CT_Mirrors GNU mpfr)"
 CT_MPFR_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
@@ -667,7 +687,7 @@ CT_MPFR_3_0_0_or_later=y
 CT_MPFR_REQUIRE_3_0_0_or_later=y
 # CT_COMP_LIBS_NCURSES is not set
 # CT_COMP_LIBS_ZLIB is not set
-CT_ALL_COMP_LIBS_CHOICES="CLOOG EXPAT GETTEXT GMP ISL LIBELF LIBICONV MPC MPFR NCURSES ZLIB"
+CT_ALL_COMP_LIBS_CHOICES="CLOOG EXPAT GETTEXT GMP GNUPRUMCU ISL LIBELF LIBICONV MPC MPFR NCURSES NEWLIB_NANO PICOLIBC ZLIB"
 # CT_LIBICONV_NEEDED is not set
 # CT_GETTEXT_NEEDED is not set
 CT_GMP_NEEDED=y
@@ -677,6 +697,7 @@ CT_MPC_NEEDED=y
 CT_GMP=y
 CT_MPFR=y
 CT_MPC=y
+# end of Companion libraries
 
 #
 # Companion tools
@@ -690,8 +711,10 @@ CT_MPC=y
 # CT_COMP_TOOLS_M4 is not set
 # CT_COMP_TOOLS_MAKE is not set
 CT_ALL_COMP_TOOLS_CHOICES="AUTOCONF AUTOMAKE BISON DTC LIBTOOL M4 MAKE"
+# end of Companion tools
 
 #
 # Test suite
 #
 # CT_TEST_SUITE_GCC is not set
+# end of Test suite
