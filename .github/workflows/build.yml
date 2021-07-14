@@ -5,7 +5,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 0 2 * *'
   workflow_dispatch:
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
           ${{ github.workflow }}-${{ github.job }}-ccache-arm-
     - name: ARM (little endian)
       run: |
-        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-arm -e CCACHE_MAXSIZE=1G -e TRIPLET=arm-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-arm -e CCACHE_MAXSIZE=1G -e TRIPLET=arm-any32-linux-musleabi ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
         sudo rm -rf .build/arm-any32-linux-musleabi
     - name: Get cached ccache-mips
       uses: actions/cache@v2
@@ -46,7 +46,7 @@ jobs:
           ${{ github.workflow }}-${{ github.job }}-ccache-mips-
     - name: MIPS (big endian)
       run: |
-        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mips -e CCACHE_MAXSIZE=1G -e TRIPLET=mips-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mips -e CCACHE_MAXSIZE=1G -e TRIPLET=mips-any32-linux-musl ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
         sudo rm -rf .build/mips-any32-linux-musl
     - name: Get cached ccache-i386
       uses: actions/cache@v2
@@ -57,7 +57,7 @@ jobs:
           ${{ github.workflow }}-${{ github.job }}-ccache-i386-
     - name: x86
       run: |
-        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-i386 -e CCACHE_MAXSIZE=1G -e TRIPLET=i386-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-i386 -e CCACHE_MAXSIZE=1G -e TRIPLET=i386-any32-linux-musl ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
         sudo rm -rf .build/i386-any32-linux-musl
     - name: Get cached ccache-armeb
       uses: actions/cache@v2
@@ -69,7 +69,7 @@ jobs:
     - name: ARM (big endian)
       run: |
         patch config-arm-any32-linux-musleabi -o config-armeb-any32-linux-musleabi < arm-armeb.diff
-        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-armeb -e CCACHE_MAXSIZE=1G -e TRIPLET=armeb-any32-linux-musleabi dimkr/toolchains ./build-toolchain.sh
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-armeb -e CCACHE_MAXSIZE=1G -e TRIPLET=armeb-any32-linux-musleabi ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
         sudo rm -rf .build/armeb-any32-linux-musleabi
     - name: Get cached ccache-mipsel
       uses: actions/cache@v2
@@ -81,7 +81,7 @@ jobs:
     - name: MIPS (little endian)
       run: |
         patch config-mips-any32-linux-musl -o config-mipsel-any32-linux-musl < mips-mipsel.diff
-        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mipsel -e CCACHE_MAXSIZE=1G -e TRIPLET=mipsel-any32-linux-musl dimkr/toolchains ./build-toolchain.sh
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-mipsel -e CCACHE_MAXSIZE=1G -e TRIPLET=mipsel-any32-linux-musl ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
         sudo rm -rf .build/mipsel-any32-linux-musl
     - name: Create Release
       id: create_release
