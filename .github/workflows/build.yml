@@ -14,6 +14,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Get cached ccache-x86_64
+      uses: actions/cache@v2
+      with:
+        path: ccache-x86_64
+        key: ${{ github.workflow }}-${{ github.job }}-ccache-x86_64-${{ github.sha }}
+        restore-keys: |
+          ${{ github.workflow }}-${{ github.job }}-ccache-x86_64-
+    - name: x86_64
+      run: |
+        patch config-i386-any32-linux-musl -o config-x86_64-any64-linux-musl < i386-x86_64.diff
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-x86_64 -e CCACHE_MAXSIZE=1G -e TRIPLET=x86_64-any64-linux-musl dimkr/toolchains ./build-toolchain.sh
+        sudo rm -rf .build/x86_64-any64-linux-musl
     - name: Get cached ccache-arm
       uses: actions/cache@v2
       with:
@@ -81,6 +93,15 @@ jobs:
         release_name: v${{ github.run_number }}
         draft: false
         prerelease: false
+    - name: Upload x86_64 toolchain
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: x86_64-any64-linux-musl.tar.gz
+        asset_name: x86_64-any64-linux-musl.tar.gz
+        asset_content_type: application/octet-stream
     - name: Upload little-endian ARM toolchain
       uses: actions/upload-release-asset@v1
       env:

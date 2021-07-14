@@ -1,0 +1,33 @@
+--- config-i386-any32-linux-musl	2021-07-14 08:52:35.608915070 +0300
++++ config-x86_64-any64-linux-musl	2021-07-14 08:57:50.988353808 +0300
+@@ -169,9 +169,9 @@ CT_ARCH_USE_MMU=y
+ CT_ARCH_SUPPORTS_32=y
+ CT_ARCH_SUPPORTS_64=y
+ CT_ARCH_DEFAULT_32=y
+-CT_ARCH_BITNESS=32
+-CT_ARCH_32=y
+-# CT_ARCH_64 is not set
++CT_ARCH_BITNESS=64
++# CT_ARCH_32 is not set
++CT_ARCH_64=y
+ CT_ARCH_SUPPORTS_WITH_32_64=y
+ 
+ #
+@@ -181,7 +181,7 @@ CT_ARCH_SUPPORTS_WITH_ARCH=y
+ CT_ARCH_SUPPORTS_WITH_CPU=y
+ CT_ARCH_SUPPORTS_WITH_TUNE=y
+ CT_ARCH_ARCH=""
+-CT_TARGET_CFLAGS="-march=i386 -mtune=i686 -Os -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
++CT_TARGET_CFLAGS="-march=x86-64 -mtune=generic -Os -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
+ CT_TARGET_LDFLAGS="-Wl,--gc-sections -Wl,--sort-common"
+ # end of Target options
+ 
+@@ -206,7 +206,7 @@ CT_TOOLCHAIN_BUGURL=""
+ #
+ # Tuple completion and aliasing
+ #
+-CT_TARGET_VENDOR="any32"
++CT_TARGET_VENDOR="any64"
+ CT_TARGET_ALIAS_SED_EXPR=""
+ CT_TARGET_ALIAS=""
+ 
