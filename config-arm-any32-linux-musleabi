@@ -1,12 +1,12 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# crosstool-NG 1.24.0.317_77d75eb Configuration
+# crosstool-NG UNKNOWN Configuration
 #
 CT_CONFIGURE_has_static_link=y
 CT_CONFIGURE_has_cxx11=y
 CT_CONFIGURE_has_curl=y
-CT_CONFIGURE_has_meson=y
 CT_CONFIGURE_has_ninja=y
+CT_CONFIGURE_has_rsync=y
 CT_CONFIGURE_has_make_3_81_or_newer=y
 CT_CONFIGURE_has_make_4_0_or_newer=y
 CT_CONFIGURE_has_libtool_2_4_or_newer=y
@@ -24,11 +24,11 @@ CT_CONFIGURE_has_sha1sum=y
 CT_CONFIGURE_has_sha256sum=y
 CT_CONFIGURE_has_sha512sum=y
 CT_CONFIGURE_has_install_with_strip_program=y
-CT_VERSION="1.24.0.317_77d75eb"
+CT_VERSION="UNKNOWN"
 CT_VCHECK=""
-CT_CONFIG_VERSION_ENV="3"
-CT_CONFIG_VERSION_CURRENT="3"
-CT_CONFIG_VERSION="3"
+CT_CONFIG_VERSION_ENV="4"
+CT_CONFIG_VERSION_CURRENT="4"
+CT_CONFIG_VERSION="4"
 CT_MODULES=y
 
 #
@@ -100,6 +100,7 @@ CT_PARALLEL_JOBS=0
 CT_LOAD=""
 CT_USE_PIPES=y
 CT_EXTRA_CFLAGS_FOR_BUILD=""
+CT_EXTRA_CXXFLAGS_FOR_BUILD=""
 CT_EXTRA_LDFLAGS_FOR_BUILD=""
 CT_EXTRA_CFLAGS_FOR_HOST=""
 CT_EXTRA_LDFLAGS_FOR_HOST=""
@@ -284,6 +285,11 @@ CT_LINUX_PATCH_GLOBAL=y
 # CT_LINUX_PATCH_LOCAL_BUNDLED is not set
 # CT_LINUX_PATCH_NONE is not set
 CT_LINUX_PATCH_ORDER="global"
+# CT_LINUX_V_5_16 is not set
+# CT_LINUX_V_5_15 is not set
+# CT_LINUX_V_5_14 is not set
+# CT_LINUX_V_5_13 is not set
+# CT_LINUX_V_5_12 is not set
 # CT_LINUX_V_5_11 is not set
 # CT_LINUX_V_5_10 is not set
 # CT_LINUX_V_5_9 is not set
@@ -321,12 +327,17 @@ CT_LINUX_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_LINUX_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_LINUX_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_LINUX_SIGNATURE_FORMAT="unpacked/.sign"
+CT_LINUX_5_12_or_older=y
+CT_LINUX_older_than_5_12=y
+CT_LINUX_5_3_or_older=y
+CT_LINUX_older_than_5_3=y
 CT_LINUX_4_8_or_older=y
 CT_LINUX_older_than_4_8=y
 CT_LINUX_3_7_or_older=y
 CT_LINUX_older_than_3_7=y
 CT_LINUX_3_2_or_older=y
 CT_LINUX_older_than_3_2=y
+CT_KERNEL_DEP_RSYNC=y
 CT_KERNEL_LINUX_VERBOSITY_0=y
 # CT_KERNEL_LINUX_VERBOSITY_1 is not set
 # CT_KERNEL_LINUX_VERBOSITY_2 is not set
@@ -355,6 +366,7 @@ CT_BINUTILS_BINUTILS_SHOW=y
 CT_BINUTILS_BINUTILS_PKG_KSYM="BINUTILS"
 CT_BINUTILS_DIR_NAME="binutils"
 CT_BINUTILS_USE_GNU=y
+# CT_BINUTILS_USE_LINARO is not set
 # CT_BINUTILS_USE_ORACLE is not set
 CT_BINUTILS_USE="BINUTILS"
 CT_BINUTILS_PKG_NAME="binutils"
@@ -368,7 +380,9 @@ CT_BINUTILS_PATCH_GLOBAL=y
 # CT_BINUTILS_PATCH_LOCAL_BUNDLED is not set
 # CT_BINUTILS_PATCH_NONE is not set
 CT_BINUTILS_PATCH_ORDER="global"
-CT_BINUTILS_V_2_36=y
+CT_BINUTILS_V_2_38=y
+# CT_BINUTILS_V_2_37 is not set
+# CT_BINUTILS_V_2_36 is not set
 # CT_BINUTILS_V_2_35 is not set
 # CT_BINUTILS_V_2_34 is not set
 # CT_BINUTILS_V_2_33 is not set
@@ -379,7 +393,7 @@ CT_BINUTILS_V_2_36=y
 # CT_BINUTILS_V_2_28 is not set
 # CT_BINUTILS_V_2_27 is not set
 # CT_BINUTILS_V_2_26 is not set
-CT_BINUTILS_VERSION="2.36.1"
+CT_BINUTILS_VERSION="2.38"
 CT_BINUTILS_MIRRORS="$(CT_Mirrors GNU binutils) $(CT_Mirrors sourceware binutils/releases)"
 CT_BINUTILS_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_BINUTILS_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -389,18 +403,12 @@ CT_BINUTILS_later_than_2_30=y
 CT_BINUTILS_2_30_or_later=y
 CT_BINUTILS_later_than_2_27=y
 CT_BINUTILS_2_27_or_later=y
-CT_BINUTILS_later_than_2_25=y
-CT_BINUTILS_2_25_or_later=y
-CT_BINUTILS_later_than_2_23=y
-CT_BINUTILS_2_23_or_later=y
+CT_BINUTILS_later_than_2_26=y
+CT_BINUTILS_2_26_or_later=y
 
 #
 # GNU binutils
 #
-CT_BINUTILS_HAS_HASH_STYLE=y
-CT_BINUTILS_HAS_GOLD=y
-CT_BINUTILS_HAS_PLUGINS=y
-CT_BINUTILS_HAS_PKGVERSION_BUGURL=y
 CT_BINUTILS_GOLD_SUPPORTS_ARCH=y
 CT_BINUTILS_GOLD_SUPPORT=y
 CT_BINUTILS_LINKER_LD=y
@@ -420,10 +428,9 @@ CT_ALL_BINUTILS_CHOICES="BINUTILS"
 #
 # C-library
 #
-# CT_LIBC_BIONIC is not set
 # CT_LIBC_GLIBC is not set
 CT_LIBC_MUSL=y
-# CT_LIBC_UCLIBC is not set
+# CT_LIBC_UCLIBC_NG is not set
 CT_LIBC="musl"
 CT_LIBC_CHOICE_KSYM="MUSL"
 CT_THREADS="musl"
@@ -445,7 +452,8 @@ CT_MUSL_PATCH_GLOBAL=y
 # CT_MUSL_PATCH_LOCAL_BUNDLED is not set
 # CT_MUSL_PATCH_NONE is not set
 CT_MUSL_PATCH_ORDER="global"
-CT_MUSL_V_1_2_2=y
+CT_MUSL_V_1_2_3=y
+# CT_MUSL_V_1_2_2 is not set
 # CT_MUSL_V_1_2_1 is not set
 # CT_MUSL_V_1_1_24 is not set
 # CT_MUSL_V_1_1_23 is not set
@@ -456,7 +464,7 @@ CT_MUSL_V_1_2_2=y
 # CT_MUSL_V_1_1_18 is not set
 # CT_MUSL_V_1_1_17 is not set
 # CT_MUSL_V_1_1_16 is not set
-CT_MUSL_VERSION="1.2.2"
+CT_MUSL_VERSION="1.2.3"
 CT_MUSL_MIRRORS="http://www.musl-libc.org/releases"
 CT_MUSL_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_MUSL_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
@@ -469,7 +477,7 @@ CT_MUSL_SIGNATURE_FORMAT="packed/.asc"
 # CT_LIBC_MUSL_OPTIMIZE_SPEED is not set
 CT_LIBC_MUSL_OPTIMIZE_SIZE=y
 CT_LIBC_MUSL_OPTIMIZE="size"
-CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC"
+CT_ALL_LIBC_CHOICES="AVR_LIBC BIONIC GLIBC MINGW_W64 MOXIEBOX MUSL NEWLIB NONE UCLIBC_NG"
 CT_LIBC_SUPPORT_THREADS_ANY=y
 CT_LIBC_SUPPORT_THREADS_NATIVE=y
 
@@ -482,9 +490,7 @@ CT_THREADS_NATIVE=y
 #
 # C compiler
 #
-CT_CC_CORE_PASSES_NEEDED=y
-CT_CC_CORE_PASS_1_NEEDED=y
-CT_CC_CORE_PASS_2_NEEDED=y
+CT_CC_CORE_NEEDED=y
 CT_CC_SUPPORT_CXX=y
 CT_CC_SUPPORT_FORTRAN=y
 CT_CC_SUPPORT_ADA=y
@@ -503,7 +509,6 @@ CT_CC_GCC_PKG_KSYM="GCC"
 CT_GCC_DIR_NAME="gcc"
 CT_GCC_USE_GNU=y
 # CT_GCC_USE_LINARO is not set
-# CT_GCC_USE_ORACLE is not set
 CT_GCC_USE="GCC"
 CT_GCC_PKG_NAME="gcc"
 CT_GCC_SRC_RELEASE=y
@@ -516,6 +521,7 @@ CT_GCC_PATCH_GLOBAL=y
 # CT_GCC_PATCH_LOCAL_BUNDLED is not set
 # CT_GCC_PATCH_NONE is not set
 CT_GCC_PATCH_ORDER="global"
+# CT_GCC_V_11 is not set
 # CT_GCC_V_10 is not set
 # CT_GCC_V_9 is not set
 # CT_GCC_V_8 is not set
@@ -529,6 +535,12 @@ CT_GCC_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GCC_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GCC_ARCHIVE_FORMATS=".tar.xz .tar.gz"
 CT_GCC_SIGNATURE_FORMAT=""
+CT_GCC_11_or_older=y
+CT_GCC_older_than_11=y
+CT_GCC_10_or_older=y
+CT_GCC_older_than_10=y
+CT_GCC_9_or_older=y
+CT_GCC_older_than_9=y
 CT_GCC_8_or_older=y
 CT_GCC_older_than_8=y
 CT_GCC_later_than_7=y
@@ -539,8 +551,6 @@ CT_GCC_later_than_5=y
 CT_GCC_5_or_later=y
 CT_GCC_later_than_4_9=y
 CT_GCC_4_9_or_later=y
-CT_GCC_later_than_4_8=y
-CT_GCC_4_8_or_later=y
 CT_CC_GCC_HAS_LIBMPX=y
 CT_CC_GCC_ENABLE_CXX_FLAGS=""
 CT_CC_GCC_CORE_EXTRA_CONFIG_ARRAY=""
@@ -635,11 +645,6 @@ CT_GMP_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
 CT_GMP_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
 CT_GMP_ARCHIVE_FORMATS=".tar.xz .tar.lz .tar.bz2"
 CT_GMP_SIGNATURE_FORMAT="packed/.sig"
-CT_GMP_later_than_5_1_0=y
-CT_GMP_5_1_0_or_later=y
-CT_GMP_later_than_5_0_0=y
-CT_GMP_5_0_0_or_later=y
-CT_GMP_REQUIRE_5_0_0_or_later=y
 # CT_COMP_LIBS_ISL is not set
 # CT_COMP_LIBS_LIBELF is not set
 # CT_COMP_LIBS_LIBICONV is not set
@@ -693,9 +698,6 @@ CT_MPFR_ARCHIVE_FORMATS=".tar.xz .tar.bz2 .tar.gz .zip"
 CT_MPFR_SIGNATURE_FORMAT="packed/.asc"
 CT_MPFR_later_than_4_0_0=y
 CT_MPFR_4_0_0_or_later=y
-CT_MPFR_later_than_3_0_0=y
-CT_MPFR_3_0_0_or_later=y
-CT_MPFR_REQUIRE_3_0_0_or_later=y
 # CT_COMP_LIBS_NCURSES is not set
 # CT_COMP_LIBS_ZLIB is not set
 CT_ALL_COMP_LIBS_CHOICES="CLOOG EXPAT GETTEXT GMP GNUPRUMCU ISL LIBELF LIBICONV MPC MPFR NCURSES NEWLIB_NANO PICOLIBC ZLIB"
