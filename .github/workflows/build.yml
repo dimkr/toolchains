@@ -26,6 +26,18 @@ jobs:
         patch config-i386-any32-linux-musl -o config-x86_64-any64-linux-musl < i386-x86_64.diff
         docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-x86_64 -e CCACHE_MAXSIZE=1G -e TRIPLET=x86_64-any64-linux-musl ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
         sudo rm -rf .build/x86_64-any64-linux-musl
+    - name: Get cached ccache-aarch64
+      uses: actions/cache@v2
+      with:
+        path: ccache-aarch64
+        key: ${{ github.workflow }}-${{ github.job }}-ccache-aarch64-${{ github.sha }}
+        restore-keys: |
+          ${{ github.workflow }}-${{ github.job }}-ccache-aarch64-
+    - name: AArch64
+      run: |
+        patch config-arm-any32-linux-musleabi -o config-aarch64-any64-linux-musl < arm-aarch64.diff
+        docker run --rm -w /root/toolchains -v `pwd`:/root/toolchains -e CCACHE_DIR=/root/toolchains/ccache-aarch64 -e CCACHE_MAXSIZE=1G -e TRIPLET=aarch64-any64-linux-musl ghcr.io/${{ github.repository }}/ci-container:latest ./build-toolchain.sh
+        sudo rm -rf .build/aarch64-any64-linux-musl
     - name: Get cached ccache-arm
       uses: actions/cache@v2
       with:
@@ -101,6 +113,15 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: x86_64-any64-linux-musl.tar.gz
         asset_name: x86_64-any64-linux-musl.tar.gz
+        asset_content_type: application/octet-stream
+    - name: Upload AArch64 toolchain
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: aarch64-any64-linux-musl.tar.gz
+        asset_name: aarch64-any64-linux-musl.tar.gz
         asset_content_type: application/octet-stream
     - name: Upload little-endian ARM toolchain
       uses: actions/upload-release-asset@v1

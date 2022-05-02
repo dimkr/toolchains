@@ -1,0 +1,98 @@
+--- config-arm-any32-linux-musleabi	2022-05-02 16:45:11.513882393 +0800
++++ config-aarch64-any64-linux-musl	2022-05-02 16:56:26.505953237 +0800
+@@ -157,12 +157,6 @@ CT_ARCH_ARM_SHOW=y
+ # Options for arm
+ #
+ CT_ARCH_ARM_PKG_KSYM=""
+-CT_ARCH_ARM_MODE="arm"
+-CT_ARCH_ARM_MODE_ARM=y
+-# CT_ARCH_ARM_MODE_THUMB is not set
+-# CT_ARCH_ARM_INTERWORKING is not set
+-CT_ARCH_ARM_EABI_FORCE=y
+-CT_ARCH_ARM_EABI=y
+ CT_ALL_ARCH_CHOICES="ALPHA ARC ARM AVR C6X M68K MICROBLAZE MIPS MOXIE MSP430 NIOS2 POWERPC PRU RISCV S390 SH SPARC X86 XTENSA"
+ CT_ARCH_SUFFIX=""
+ # CT_OMIT_TARGET_VENDOR is not set
+@@ -184,9 +178,9 @@ CT_ARCH_ENDIAN="little"
+ CT_ARCH_SUPPORTS_32=y
+ CT_ARCH_SUPPORTS_64=y
+ CT_ARCH_DEFAULT_32=y
+-CT_ARCH_BITNESS=32
+-CT_ARCH_32=y
+-# CT_ARCH_64 is not set
++CT_ARCH_BITNESS=64
++# CT_ARCH_32 is not set
++CT_ARCH_64=y
+ 
+ #
+ # Target optimisations
+@@ -194,19 +188,10 @@ CT_ARCH_32=y
+ CT_ARCH_SUPPORTS_WITH_ARCH=y
+ CT_ARCH_SUPPORTS_WITH_CPU=y
+ CT_ARCH_SUPPORTS_WITH_TUNE=y
+-CT_ARCH_SUPPORTS_WITH_FLOAT=y
+-CT_ARCH_SUPPORTS_WITH_FPU=y
+-CT_ARCH_SUPPORTS_SOFTFP=y
+ CT_ARCH_EXCLUSIVE_WITH_CPU=y
+ CT_ARCH_ARCH=""
+-CT_ARCH_FPU=""
+-# CT_ARCH_FLOAT_AUTO is not set
+-# CT_ARCH_FLOAT_HW is not set
+-# CT_ARCH_FLOAT_SOFTFP is not set
+-CT_ARCH_FLOAT_SW=y
+-CT_TARGET_CFLAGS="-march=armv4t -mtune=generic-armv7-a -marm -Os -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
++CT_TARGET_CFLAGS="-march=armv8-a -mtune=generic -Os -fomit-frame-pointer -ffunction-sections -fdata-sections -fmerge-all-constants"
+ CT_TARGET_LDFLAGS="-static -Wl,--gc-sections -Wl,--sort-common"
+-CT_ARCH_FLOAT="soft"
+ # end of Target options
+ 
+ #
+@@ -230,7 +215,7 @@ CT_TOOLCHAIN_BUGURL=""
+ #
+ # Tuple completion and aliasing
+ #
+-CT_TARGET_VENDOR="any32"
++CT_TARGET_VENDOR="any64"
+ CT_TARGET_ALIAS_SED_EXPR=""
+ CT_TARGET_ALIAS=""
+ 
+@@ -311,17 +296,14 @@ CT_LINUX_PATCH_ORDER="global"
+ # CT_LINUX_V_4_12 is not set
+ # CT_LINUX_V_4_11 is not set
+ # CT_LINUX_V_4_10 is not set
+-# CT_LINUX_V_4_9 is not set
++CT_LINUX_V_4_9=y
+ # CT_LINUX_V_4_4 is not set
+ # CT_LINUX_V_4_1 is not set
+ # CT_LINUX_V_3_16 is not set
+ # CT_LINUX_V_3_13 is not set
+ # CT_LINUX_V_3_12 is not set
+ # CT_LINUX_V_3_10 is not set
+-# CT_LINUX_V_3_4 is not set
+-# CT_LINUX_V_3_2 is not set
+-CT_LINUX_V_2_6_32=y
+-CT_LINUX_VERSION="2.6.32.71"
++CT_LINUX_VERSION="4.9.301"
+ CT_LINUX_MIRRORS="$(CT_Mirrors kernel.org linux ${CT_LINUX_VERSION})"
+ CT_LINUX_ARCHIVE_FILENAME="@{pkg_name}-@{version}"
+ CT_LINUX_ARCHIVE_DIRNAME="@{pkg_name}-@{version}"
+@@ -331,12 +313,13 @@ CT_LINUX_5_12_or_older=y
+ CT_LINUX_older_than_5_12=y
+ CT_LINUX_5_3_or_older=y
+ CT_LINUX_older_than_5_3=y
+-CT_LINUX_4_8_or_older=y
+-CT_LINUX_older_than_4_8=y
+-CT_LINUX_3_7_or_older=y
+-CT_LINUX_older_than_3_7=y
+-CT_LINUX_3_2_or_older=y
+-CT_LINUX_older_than_3_2=y
++CT_LINUX_later_than_4_8=y
++CT_LINUX_4_8_or_later=y
++CT_LINUX_later_than_3_7=y
++CT_LINUX_3_7_or_later=y
++CT_LINUX_REQUIRE_3_7_or_later=y
++CT_LINUX_later_than_3_2=y
++CT_LINUX_3_2_or_later=y
+ CT_KERNEL_DEP_RSYNC=y
+ CT_KERNEL_LINUX_VERBOSITY_0=y
+ # CT_KERNEL_LINUX_VERBOSITY_1 is not set
