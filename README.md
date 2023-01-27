@@ -15,6 +15,10 @@ This repository is a CI/CD pipeline for a collection of cross-compilation C/C++ 
 
 These toolchains are ideal for training, research, debugging, CI and development of cross-platform software.
 
+## Supported Architectures
+
+Please read [ARCHITECTURES.md](./ARCHITECTURES.md) for information on currently supported architectures by toolchains.
+
 ## Usage
 
 Pre-built toolchains are available [here](https://github.com/dimkr/toolchains/releases).
